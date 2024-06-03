@@ -30,7 +30,7 @@
 }
 
 
-.trend-1__container, .trend-2__container, .trend-3__container {
+.trending-articles__container article {
     width: 30rem;
     min-height: 45rem;
     background-color: var(--background-article);
@@ -38,7 +38,7 @@
     padding-bottom: 1rem;
 }
 
-.trend-1 .img1-container {
+.trending-articles__container div div:first-child {
     width: 30rem;
     height: 20rem;
     overflow: hidden;
@@ -47,58 +47,18 @@
     align-items: center;
 }
 
-.trend-1 .img1-container img {
+.trending-articles__container div div:first-child img {
     width: 100%;
     /* height: 20rem; */
     transition: 0.8s ease all;
 }
 
-.trend-1 .img1-container img:hover {
+.trending-articles__container div div:first-child img:hover {
     width: 120%;
     /* height: 30rem; */
 }
 
-.trend-2 .img2-container {
-    width: 30rem;
-    height: 20rem;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.trend-2 .img2-container img {
-    width: 100%;
-    /* height: 20rem; */
-    transition: 0.8s ease all;
-}
-
-.trend-2 .img2-container img:hover {
-    width: 120%;
-    /* height: 30rem; */
-}
-
-.trend-3 .img3-container {
-    width: 30rem;
-    height: 20rem;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.trend-3 .img3-container img {
-    width: 100%;
-    /* height: 20rem; */
-    transition: 0.6s ease all;
-}
-
-.trend-3 .img3-container img:hover {
-    width: 120%;
-    /* height: 30rem; */
-}
-
-.trend-1 h3, .trend-2 h3, .trend-3 h3 {
+.trending-articles__container h3 {
     width: 100%;
     color: var(--planeta-geek-celeste-border);
     margin-top: 1rem;
@@ -106,7 +66,7 @@
     padding: 1rem 2rem 0;
 }
 
-.trend-1 p, .trend-2 p, .trend-3 p {
+.trending-articles__container p {
     width: 100%;
     color: var(--white);
     font-weight: 300;
@@ -116,8 +76,35 @@
     line-height: 2.5rem;
 }
 
-.trend-1 a, .trend-2 a, .trend-3 a {
+.trending-articles__container a {
     width: 100%;
     color: var(--planeta-geek-celeste-border);
     text-decoration: none;
 }
+
+@media (min-width: 700px) {
+    .trending-articles__container {
+      width: 69rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem auto 0;
+  }
+  }
+  
+  @media (min-width: 1060px) {
+    .trends {
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
+    
+    .trends .title-container h2:before {
+        left: 8.5rem;
+    }
+    
+    .trending-articles__container {
+        width: 100rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
