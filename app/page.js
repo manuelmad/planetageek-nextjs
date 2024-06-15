@@ -45,7 +45,7 @@ export default function Home() {
         setTrendText3(data[2].data().text);
 
         // Getting the url of all images in firebasestorage and updating the corresponding state, as well as sending that url to fibase database
-        getDownloadURL(ref(storage, 'trends/trend1.png'))
+        getDownloadURL(ref(storage, 'trends/trend1/trend1.png'))
         .then(async url => {
           setImgUrl1(url);
           await updateDoc(doc(db, 'trends', 'trend1'), {
@@ -53,7 +53,7 @@ export default function Home() {
           });
         })
         .catch((error) => {console.log('error:', error)});
-        getDownloadURL(ref(storage, 'trends/trend2.png'))
+        getDownloadURL(ref(storage, 'trends/trend2/trend2.png'))
         .then(async url => {
           setImgUrl2(url);
           await updateDoc(doc(db, 'trends', 'trend2'), {
@@ -61,7 +61,7 @@ export default function Home() {
           });
         })
         .catch((error) => {console.log('error:', error)});
-        getDownloadURL(ref(storage, 'trends/trend3.png'))
+        getDownloadURL(ref(storage, 'trends/trend3/trend3.png'))
         .then(async url => {
           setImgUrl3(url);
           await updateDoc(doc(db, 'trends', 'trend3'), {

@@ -1,5 +1,7 @@
 /* TENDENCIAS */
-
+#trends {
+    min-height: 100vh;
+}
 .trends .title-container h2 {
     background-color: var(--planeta-geek-celeste);
     color: var(--black);

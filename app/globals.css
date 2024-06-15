@@ -41,6 +41,10 @@ html {
   --xlg: 2.2rem
 }
 
+main {
+  min-height: 100vh;
+}
+
 .trends, .gamer-tips, .launches, .notifications, .us, .tournaments, .apps {
   background-color: var(--background-sections);
   width: 100%;
