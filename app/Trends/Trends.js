@@ -1,4 +1,3 @@
-'use client';
 import Image from "next/image";
 import './trends.css';
 
@@ -34,7 +33,7 @@ export default function Trends({
                     <div>
                         <div>
                             <Image
-                                src={imgUrl1}
+                                src={imgUrl1 || '/public/next.svg'}
                                 alt="trend1 img"
                                 width={300}
                                 height={200}    
@@ -50,7 +49,7 @@ export default function Trends({
                     <div>
                         <div>
                             <Image
-                                src={imgUrl2}
+                                src={imgUrl2 || '/public/next.svg'}
                                 alt="trend2 img"
                                 width={300}
                                 height={200}    
@@ -66,7 +65,7 @@ export default function Trends({
                     <div>
                         <div>
                             <Image
-                                src={imgUrl3}
+                                src={imgUrl3 || '/public/next.svg'}
                                 alt="trend3 img"
                                 width={300}
                                 height={200}    
