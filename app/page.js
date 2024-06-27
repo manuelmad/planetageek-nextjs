@@ -26,30 +26,28 @@ export default function Home() {
   const [imgRef2, setImgRef2] = useState({});
   const [imgRef3, setImgRef3] = useState({});
 
-  useEffect(()=> {
-    // Get the collection 'trends' from firebase
-    const trendsCollection = collection(db, 'trends');
+  // Get the collection 'trends' from firebase
+  const trendsCollection = collection(db, 'trends');
 
-    // Get a reference to the storage service, which is used to create references in your storage bucket
-    const storage = getStorage();
+  // Get a reference to the storage service, which is used to create references in your storage bucket
+  const storage = getStorage();
 
-    // Variables to imgs names and refs
-    let a;
-    let b;
+  // Variables to imgs names and refs
+  let a;
+  let b;
 
-    let c;
-    let d;
+  let c;
+  let d;
 
-    let e;
-    let f;
+  let e;
+  let f;
 
-    // Function to get the names of the images existing in Firebase Storage
-    const getImgsNames = () => {
+  // Function to get the names of the images existing in Firebase Storage
+  const getImgsNames = () => {
     // Getting the url of all folders that contain the images in firebasestorage
     const listRef1 = ref(storage, 'trends/trend1');
     const listRef2 = ref(storage, 'trends/trend2');
     const listRef3 = ref(storage, 'trends/trend3');
-
 
     listAll(listRef1)
     .then((res) => {
@@ -95,36 +93,47 @@ export default function Home() {
 
   }
 
-    const getImgsUrls = () => {
-      // Getting the url of all images in firebasestorage and updating the corresponding state, as well as sending that url to fibase database
-      getDownloadURL(b)
-      .then(async url => {
-        setImgUrl1(url);
-        await updateDoc(doc(db, 'trends', 'trend1'), {
-          img: url
-        });
-      })
-      .catch((error) => {console.log('error at getDownloadURL:', error)});
-      
-      getDownloadURL(d)
-      .then(async url => {
-        setImgUrl2(url);
-        await updateDoc(doc(db, 'trends', 'trend2'), {
-          img: url
-        });
-      })
-      .catch((error) => {console.log('error at getDownloadURL:', error)});
-      
-      getDownloadURL(f)
-      .then(async url => {
-        setImgUrl3(url);
-        await updateDoc(doc(db, 'trends', 'trend3'), {
-          img: url
-        });
-      })
-      .catch((error) => {console.log('error at getDownloadURL:', error)});
-    }
+  const getImgsUrls = () => {
+    // Getting the url of all images in firebasestorage and updating the corresponding state, as well as sending that url to fibase database
+    getDownloadURL(b)
+    .then(async url => {
+      setImgUrl1(url);
+      // await updateDoc(doc(db, 'trends', 'trend1'), {
+      //   img: url
+      // });
+    })
+    .catch((error) => {
+      console.log('error at getDownloadURL:', error);
+      getImgsUrls();
+    });
+    
+    getDownloadURL(d)
+    .then(async url => {
+      setImgUrl2(url);
+      // await updateDoc(doc(db, 'trends', 'trend2'), {
+      //   img: url
+      // });
+    })
+    .catch((error) => {
+      console.log('error at getDownloadURL:', error);
+      getImgsUrls();
+    });
+    
+    getDownloadURL(f)
+    .then(async url => {
+      setImgUrl3(url);
+      // await updateDoc(doc(db, 'trends', 'trend3'), {
+      //   img: url
+      // });
+    })
+    .catch((error) => {
+      console.log('error at getDownloadURL:', error);
+      getImgsUrls();
+    });
+  }
 
+
+  useEffect(()=> {
     // Listen to the current collection and get changes everytime a document is updated, created or deleted to update the trend info
     onSnapshot(trendsCollection, (snapshot)=>{
       //Getting all documents in firebasedatabase collection
