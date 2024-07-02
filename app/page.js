@@ -155,6 +155,21 @@ export default function Home() {
       // Getting images' urls
       getImgsUrls();
 
+      // Insert the plain text on firebase as html in the wensite to recognize the line breaks
+      const a = data[0].data().text.replaceAll('&lt;br&gt;', '<br>');
+      document.getElementById('p1').innerHTML = a;
+      const b = data[1].data().text.replaceAll('&lt;br&gt;', '<br>');
+      document.getElementById('p2').innerHTML = b;
+      const c = data[2].data().text.replaceAll('&lt;br&gt;', '<br>');
+      document.getElementById('p3').innerHTML = c;
+
+      const d = data[0].data().title.replaceAll('&lt;br&gt;', '<br>');
+      document.getElementById('h3_1').innerHTML = d;
+      const e = data[1].data().title.replaceAll('&lt;br&gt;', '<br>');
+      document.getElementById('h3_2').innerHTML = e;
+      const f = data[2].data().title.replaceAll('&lt;br&gt;', '<br>');
+      document.getElementById('h3_3').innerHTML = f;
+
     });
 
     // Getting images' names
@@ -165,24 +180,9 @@ export default function Home() {
   return (
     <main>
       <Trends 
-        trendTitle1={trendTitle1}
-        setTrendTitle1={setTrendTitle1}
-        trendTitle2={trendTitle2}
-        setTrendTitle2={setTrendTitle2}
-        trendTitle3={trendTitle3}
-        setTrendTitle3={setTrendTitle3}
-        trendText1={trendText1}
-        setTrendText1={setTrendText1}
-        trendText2={trendText2}
-        setTrendText2={setTrendText2}
-        trendText3={trendText3}
-        setTrendText3={setTrendText3}
         imgUrl1={imgUrl1}
-        setImgUrl1={setImgUrl1}
         imgUrl2={imgUrl2}
-        setImgUrl2={setImgUrl2}
         imgUrl3={imgUrl3}
-        setImgUrl3={setImgUrl3}
       />
     </main>
   );
